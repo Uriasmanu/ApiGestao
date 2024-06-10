@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:mylojaapi.database.windows.net,1433",
+      "dynamicId": null
+    }
+  }
+}

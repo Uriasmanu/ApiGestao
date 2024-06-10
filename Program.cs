@@ -1,11 +1,19 @@
+using ApiGestao.Banco;
 using ApiGestao.Rotas;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Definir a string de conexão diretamente no código
+string connectionString = "Server=tcp:mylojaapi.database.windows.net,1433;Initial Catalog=loja.db;Persist Security Info=False;User ID=loja;Password=senha123#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configurar o contexto de banco de dados com a string de conexão
+builder.Services.AddDbContext<Context>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -18,7 +26,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPessoaRotas();
+// Mapear as rotas
+app.MapEstoqueRotas();
 
 app.Run();
-
