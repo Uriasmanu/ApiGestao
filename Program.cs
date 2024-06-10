@@ -2,6 +2,7 @@ using ApiGestao.Banco;
 using ApiGestao.Rotas;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Definir a string de conexão diretamente no código
