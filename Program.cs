@@ -11,6 +11,12 @@ string connectionString = "Server=tcp:mylojaapi.database.windows.net,1433;Initia
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(option => option.AddDefaultPolicy(policy =>
+{
+    policy.AllowAnyOrigin();
+    policy.AllowAnyMethod();
+    policy.AllowAnyHeader();
+}));
 
 // Configurar o contexto de banco de dados com a string de conexão
 builder.Services.AddDbContext<Context>(options =>
@@ -25,8 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+app.UseCors();
 // Mapear as rotas
 app.MapEstoqueRotas();
 
