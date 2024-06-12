@@ -35,5 +35,6 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 // Mapear as rotas
 app.MapEstoqueRotas();
+app.MapLoginRotas(); ;
 
 app.Run();

@@ -9,7 +9,11 @@ namespace ApiGestao.Rotas
         public static void MapEstoqueRotas(this WebApplication app)
         {
             // Lista os Produtos
-            app.MapGet("/estoque", async (Context db) => await db.Produtos.ToListAsync());
+            app.MapGet("/estoque", async (Context db) =>
+            {
+                var produtos = await db.Produtos.Select(p => new { p.Id, p.Nome, p.Quantidade }).ToListAsync();
+                    return produtos;
+            });
 
             // Busca pelo nome
             app.MapGet("/estoque/{nome}", async (string nome, Context db) =>

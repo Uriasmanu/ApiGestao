@@ -10,6 +10,7 @@ namespace ApiGestao.Banco
         }
 
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Login> Login { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
