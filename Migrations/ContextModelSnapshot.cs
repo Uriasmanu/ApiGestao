@@ -43,7 +43,7 @@ namespace ApiGestao.Migrations
                     b.ToTable("Login");
                 });
 
-            modelBuilder.Entity("ApiGestao.Modelos.Produto", b =>
+            modelBuilder.Entity("ApiGestao.Modelos.Clente", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,12 +53,12 @@ namespace ApiGestao.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Quantidade")
+                    b.Property<int>("Telefone")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("Clientes");
                 });
 #pragma warning restore 612, 618
         }
